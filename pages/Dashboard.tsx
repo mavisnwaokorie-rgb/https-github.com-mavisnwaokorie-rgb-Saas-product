@@ -203,8 +203,8 @@ export const Dashboard: React.FC = () => {
 
           {isCalendarOpen && (
             <>
-              <div className="fixed inset-0 z-50" onClick={() => setIsCalendarOpen(false)}></div>
-              <div className="absolute top-full right-0 mt-3 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl z-[60] overflow-hidden animate-in zoom-in-95 origin-top-right">
+              <div className="fixed inset-0 z-[999]" onClick={() => setIsCalendarOpen(false)}></div>
+              <div className="fixed top-32 right-16 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl z-[1000] overflow-hidden animate-in zoom-in-95 origin-top-right">
                 <div className="p-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
                   <span className="m3-body-small font-black uppercase tracking-widest text-slate-400">Duration Architect</span>
                   <button onClick={() => setIsCalendarOpen(false)}><X size={14} className="text-slate-300" /></button>

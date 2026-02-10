@@ -109,7 +109,7 @@ export const Drafts: React.FC<{ onNavigate: (view: AppView) => void }> = ({ onNa
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`px-8 py-2.5 rounded-xl m3-body-small font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-white dark:bg-slate-700 text-primary shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+            className={`px-8 py-2.5 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${activeFilter === f ? 'bg-white dark:bg-slate-700 text-primary shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
           >
             {f}
           </button>
