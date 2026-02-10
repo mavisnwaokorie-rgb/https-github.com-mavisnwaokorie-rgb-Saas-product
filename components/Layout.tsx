@@ -271,7 +271,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
                  ))}
               </div>
               
-              <button className="w-full bg-slate-900 dark:bg-blue-600 text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest active:scale-95 transition-all">Secure Checkout</button>
+              <button className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest active:scale-95 transition-all hover:opacity-90">Secure Checkout</button>
            </div>
         </div>
       )}

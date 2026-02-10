@@ -93,10 +93,10 @@ const StatCard = ({ icon: Icon, label, value, trend, color, secondary }: any) =>
         </span>
       </div>
     </div>
-    <p className="m3-body-small font-bold uppercase tracking-[0.1em] text-slate-400">{label}</p>
-    <div className="flex items-baseline space-x-1.5 mt-0.5">
+    <p className="m3-body-small font-bold uppercase tracking-widest text-slate-400">{label}</p>
+    <div className="flex items-baseline space-x-1.5 mt-1">
       <h3 className="m3-headline-small font-bold text-slate-900 dark:text-white tracking-tight">{value}</h3>
-      {secondary && <span className="m3-body-small font-bold text-slate-300 uppercase tracking-widest">{secondary}</span>}
+      {secondary && <span className="m3-body-small font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{secondary}</span>}
     </div>
   </div>
 );
@@ -112,13 +112,12 @@ export const Dashboard: React.FC = () => {
   const renderAssetDetail = (asset: any) => (
     <div className="space-y-6 animate-in slide-in-from-right-2 duration-300">
       <div className="flex items-center justify-between">
-        <button 
-          onClick={() => setSelectedAsset(null)}
-          className="flex items-center space-x-2 text-slate-500 hover:text-slate-900 font-bold m3-label-medium uppercase tracking-widest transition-all"
-        >
-          <ArrowLeft size={14} />
-          <span>Back to Overview</span>
-        </button>
+          <button
+            onClick={() => setIsCalendarOpen(true)}
+            className={`p-2 rounded-xl transition-all ${isCalendarOpen ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+          >
+            <CalendarIcon size={18} />
+          </button>
         <button className="flex items-center space-x-2 px-6 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl m3-body-small font-bold uppercase tracking-widest hover:bg-slate-50">
           <Download size={14} />
           <span>Audit Trail</span>
@@ -126,14 +125,14 @@ export const Dashboard: React.FC = () => {
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 space-y-8">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-slate-50 dark:border-slate-800 pb-8">
-          <div className="space-y-1">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6 border-b border-slate-100 dark:border-slate-800 pb-8">
+          <div className="space-y-2">
             <span className="m3-body-small font-bold uppercase tracking-widest text-primary">{asset.type} telemetry</span>
-            <h3 className="m3-headline-large font-black text-slate-900 dark:text-white tracking-tighter leading-none uppercase">{asset.title}</h3>
+            <h3 className="m3-headline-large font-black text-slate-900 dark:text-white uppercase">{asset.title}</h3>
           </div>
-          <div className="bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-2xl border border-emerald-100 dark:border-emerald-800/30 text-right min-w-[180px]">
-            <p className="m3-body-small font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">Net Commercial Gain</p>
-            <p className="m3-headline-medium font-black text-emerald-600 tracking-tighter">${asset.netProfit.toLocaleString()}</p>
+          <div className="bg-emerald-50 dark:bg-emerald-900/15 p-6 rounded-2xl border border-emerald-200 dark:border-emerald-800/40 text-right min-w-[180px]">
+            <p className="m3-body-small font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-widest mb-2">Net Commercial Gain</p>
+            <p className="m3-headline-medium font-black text-emerald-700 dark:text-emerald-400">${asset.netProfit.toLocaleString()}</p>
           </div>
         </div>
 
@@ -144,29 +143,29 @@ export const Dashboard: React.FC = () => {
             { label: 'Attrition', val: `${asset.failRate}%`, sub: 'Remediation' },
             { label: 'Integrity', val: 'Verified', sub: 'AI Audited' }
           ].map((item, i) => (
-            <div key={i} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+            <div key={i} className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-150 dark:border-slate-700">
               <p className="m3-body-small font-black text-slate-400 uppercase tracking-widest">{item.label}</p>
-              <p className="m3-headline-small font-black mt-1 text-slate-900 dark:text-white leading-none tracking-tight">{item.val}</p>
-              <p className="m3-body-small font-bold text-slate-300 uppercase mt-0.5 tracking-widest">{item.sub}</p>
+              <p className="m3-headline-small font-black mt-2 text-slate-900 dark:text-white leading-none">{item.val}</p>
+              <p className="m3-body-small font-bold text-slate-500 dark:text-slate-400 uppercase mt-1.5 tracking-widest">{item.sub}</p>
             </div>
           ))}
         </div>
 
         <div className="space-y-4">
-          <h4 className="m3-headline-small font-black text-slate-900 dark:text-white uppercase tracking-tighter">Participation Log</h4>
+          <h4 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase">Participation Log</h4>
           <div className="divide-y divide-slate-100 dark:divide-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-950">
             {asset.studentList.map((student: any, i: number) => (
-              <div key={i} className="p-5 flex items-center justify-between hover:bg-slate-50 transition-all cursor-pointer group">
+              <div key={i} className="p-5 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all cursor-pointer group">
                 <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-slate-400 m3-label-large group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-slate-500 dark:text-slate-400 m3-label-medium group-hover:bg-primary group-hover:text-white transition-colors">
                     {student.name[0]}
                   </div>
-                  <div>
-                    <p className="m3-body-medium font-black text-slate-900 dark:text-white">{student.name}</p>
-                    <p className="m3-body-small font-bold text-slate-400 uppercase tracking-widest">{student.date}</p>
+                  <div className="space-y-1">
+                    <p className="m3-label-large font-black text-slate-900 dark:text-white">{student.name}</p>
+                    <p className="m3-body-small font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{student.date}</p>
                   </div>
                 </div>
-                <p className="m3-headline-small font-black text-primary tracking-tighter">{student.score}%</p>
+                <p className="m3-headline-small font-black text-primary">{student.score}%</p>
               </div>
             ))}
           </div>
@@ -195,11 +194,18 @@ export const Dashboard: React.FC = () => {
             </button>
           ))}
           <div className="w-[1px] h-6 bg-slate-100 dark:bg-slate-800 mx-1"></div>
-          <button 
-            onClick={() => setIsCalendarOpen(true)}
-            className={`p-2 rounded-xl transition-all ${isCalendarOpen ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-50'}`}
+          <button
+            onClick={() => setPeriod('weekly')}
+            className={`px-4 py-2 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${period === 'weekly' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
           >
-            <CalendarIcon size={18} />
+            Weekly
+          </button>
+
+          <button
+            onClick={() => setPeriod('monthly')}
+            className={`px-4 py-2 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${period === 'monthly' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+          >
+            Monthly
           </button>
 
           {isCalendarOpen && (
@@ -303,31 +309,31 @@ export const Dashboard: React.FC = () => {
       </div>
 
       <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-        <div className="p-8 border-b border-slate-50 dark:border-slate-800 flex items-center justify-between">
-          <h4 className="m3-headline-small font-black text-slate-900 dark:text-white uppercase tracking-tighter">Performance Audit</h4>
-          <button className="p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-slate-400 hover:text-primary transition-all"><Filter size={18} /></button>
+        <div className="p-8 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <h4 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase">Performance Audit</h4>
+          <button className="p-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-400 hover:text-primary transition-all"><Filter size={18} /></button>
         </div>
         
-        <div className="divide-y divide-slate-50 dark:divide-slate-800">
+        <div className="divide-y divide-slate-100 dark:divide-slate-800">
           {assetPerformance.map((asset) => (
             <div 
               key={asset.id} onClick={() => setSelectedAsset(asset)}
-              className="p-7 flex flex-col md:flex-row md:items-center justify-between group hover:bg-slate-50 transition-all cursor-pointer gap-6"
+              className="p-6 flex flex-col md:flex-row md:items-center justify-between group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all cursor-pointer gap-6"
             >
-              <div className="flex items-center space-x-5">
-                <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 shrink-0 group-hover:scale-105 transition-transform">
-                  {asset.type === 'quiz' ? <FileQuestion className="text-blue-500" size={24} /> : asset.type === 'sim' ? <Stethoscope className="text-rose-500" size={24} /> : <BookOpen className="text-emerald-500" size={24} />}
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shrink-0 group-hover:scale-105 transition-transform">
+                  {asset.type === 'quiz' ? <FileQuestion className="text-blue-500" size={20} /> : asset.type === 'sim' ? <Stethoscope className="text-rose-500" size={20} /> : <BookOpen className="text-emerald-500" size={20} />}
                 </div>
-                <div className="space-y-1">
-                  <h4 className="m3-body-large font-black text-slate-900 dark:text-white leading-tight tracking-tight uppercase group-hover:text-primary transition-colors">{asset.title}</h4>
+                <div className="space-y-1.5">
+                  <h4 className="m3-label-large font-black text-slate-900 dark:text-white leading-tight uppercase group-hover:text-primary transition-colors">{asset.title}</h4>
                   <div className="flex items-center space-x-4">
-                    <p className="text-emerald-600 m3-body-small font-black uppercase tracking-[0.2em]">${asset.netProfit.toLocaleString()} Net Gain</p>
-                    <div className="w-1 h-1 bg-slate-200 rounded-full" />
-                    <p className="m3-body-small font-bold text-slate-400 uppercase tracking-widest">{asset.students} Audits performed</p>
+                    <p className="text-emerald-600 m3-body-small font-black uppercase tracking-widest">${asset.netProfit.toLocaleString()} Net Gain</p>
+                    <div className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full" />
+                    <p className="m3-body-small font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{asset.students} Audits</p>
                   </div>
                 </div>
               </div>
-              <ChevronRight className="text-slate-200 group-hover:text-primary group-hover:translate-x-1 transition-all" size={24} />
+              <ChevronRight className="text-slate-300 dark:text-slate-700 group-hover:text-primary group-hover:translate-x-1 transition-all" size={20} />
             </div>
           ))}
         </div>

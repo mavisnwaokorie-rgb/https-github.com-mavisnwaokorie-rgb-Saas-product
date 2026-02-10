@@ -146,7 +146,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ course, onCancel, onSuccess 
               <button 
                 onClick={handlePay}
                 disabled={processing}
-                className="w-full bg-primary text-white py-6 rounded-[2rem] font-black text-2xl shadow-xl shadow-blue-100 dark:shadow-none hover:opacity-95 active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center space-x-4"
+                className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest shadow-lg hover:opacity-90 active:scale-95 disabled:opacity-50 transition-all flex items-center justify-center space-x-3"
               >
                 {processing ? (
                   <>
