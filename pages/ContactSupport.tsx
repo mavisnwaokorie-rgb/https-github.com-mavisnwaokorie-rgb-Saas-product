@@ -110,7 +110,7 @@ export const ContactSupport: React.FC<{ onNavigate: (view: AppView) => void }> =
             <button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg tracking-widest uppercase shadow-xl shadow-blue-100 dark:shadow-none hover:opacity-90 transition-all flex items-center justify-center space-x-3 active:scale-95 disabled:opacity-50"
+              className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest shadow-lg hover:opacity-90 transition-all flex items-center justify-center space-x-2 active:scale-95 disabled:opacity-50"
             >
               {loading ? (
                 <>

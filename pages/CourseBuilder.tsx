@@ -152,7 +152,7 @@ export const CourseBuilder: React.FC<{ role?: UserRole, onNavigate?: (view: AppV
         <button 
           onClick={handleStartArchitecture}
           disabled={loading || !topic}
-          className="w-full bg-primary text-white py-5 rounded-2xl font-bold text-[14px] uppercase tracking-widest hover:opacity-90 active:scale-[0.98] disabled:opacity-30 transition-all flex items-center justify-center space-x-2 shadow-lg"
+          className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-bold uppercase tracking-widest hover:opacity-90 active:scale-[0.98] disabled:opacity-30 transition-all flex items-center justify-center space-x-2 shadow-lg"
         >
           {loading ? <Loader2 className="animate-spin" size={18} /> : <Sparkles size={18} />}
           <span>Initialize Outline</span>

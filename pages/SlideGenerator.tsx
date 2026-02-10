@@ -88,7 +88,7 @@ export const SlideGenerator: React.FC<{ onBack: () => void }> = ({ onBack }) => 
           <div className="p-4 border-b border-slate-50 dark:border-slate-800">
              <button 
                onClick={addSlide}
-               className="w-full py-3 bg-slate-900 dark:bg-blue-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center space-x-2 active:scale-95 transition-all"
+               className="w-full py-3 bg-primary text-white rounded-xl m3-body-small font-bold uppercase tracking-widest shadow-lg flex items-center justify-center space-x-2 active:scale-95 transition-all hover:opacity-90"
              >
                <Plus size={14} /> <span>New Slide</span>
              </button>

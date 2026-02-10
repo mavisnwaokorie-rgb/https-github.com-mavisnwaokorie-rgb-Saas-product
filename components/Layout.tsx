@@ -26,7 +26,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, active, onClick 
     }`}
   >
     {icon}
-    <span className="m3-label-large font-bold">{label}</span>
+    <span className="m3-label-medium font-bold">{label}</span>
     {active && <ChevronRight className="ml-auto w-4 h-4" />}
   </button>
 );
@@ -119,7 +119,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
             <div className="bg-primary p-1.5 rounded-lg">
               <Stethoscope className="text-white w-5 h-5" />
             </div>
-            <h1 className="m3-headline-small font-black tracking-tighter text-slate-900 dark:text-white uppercase">MedScroll</h1>
+            <h1 className="m3-label-large font-black tracking-tighter text-slate-900 dark:text-white uppercase">MedScroll</h1>
           </div>
           <button className="lg:hidden text-slate-500 hover:bg-slate-100 p-2 rounded-lg dark:hover:bg-slate-800" onClick={() => setIsSidebarOpen(false)}>
             <X size={20} />
@@ -127,15 +127,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
         </div>
 
         <div className="flex-1 overflow-y-auto px-3 space-y-1 py-4 scrollbar-hide">
-          <div className="px-3 pb-4">
+          <div className="px-3 pb-6">
             <button 
               onClick={toggleRole}
               className="w-full flex items-center justify-between px-4 py-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group hover:bg-primary transition-all duration-300 border border-transparent hover:border-primary/20"
             >
               <div className="flex items-center space-x-3">
                 {userRole === UserRole.CREATOR ? <Briefcase size={18} className="text-primary group-hover:text-white" /> : <GraduationCap size={18} className="text-primary group-hover:text-white" />}
-                <div className="text-left">
-                  <p className="m3-body-small font-black uppercase text-slate-400 group-hover:text-white/60 leading-none mb-1">Switch to</p>
+                <div className="text-left space-y-1">
+                  <p className="m3-body-small font-black uppercase text-slate-400 group-hover:text-white/60 leading-none">Switch to</p>
                   <p className="m3-label-medium font-black text-slate-900 dark:text-white group-hover:text-white">
                     {userRole === UserRole.CREATOR ? 'Learner Mode' : 'Creator Mode'}
                   </p>
@@ -198,7 +198,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
           <div className="flex items-center space-x-4">
             <button className="lg:hidden p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" onClick={() => setIsSidebarOpen(true)}><Menu size={22} /></button>
             <div className="hidden sm:flex items-center space-x-2 text-slate-400">
-              <span className="m3-body-small font-black uppercase tracking-widest">
+              <span className="m3-body-small font-black uppercase tracking-widest leading-none">
                 {userRole.toUpperCase()} / {activeView.replace('_', ' ')}
               </span>
             </div>
@@ -223,11 +223,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
             <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-1"></div>
             
             <div className="flex items-center space-x-4 pl-2 cursor-pointer group" onClick={() => handleNavClick(AppView.ACCOUNT)}>
-              <div className="text-right hidden md:block">
-                <p className="m3-label-large font-black text-slate-900 dark:text-white leading-none">
+              <div className="text-right hidden md:block space-y-1">
+                <p className="m3-label-medium font-black text-slate-900 dark:text-white leading-none">
                   {userRole === UserRole.CREATOR ? 'Dr. Sarah Chen' : 'Alex Rivera'}
                 </p>
-                <p className="m3-body-small font-black text-slate-400 uppercase mt-1 tracking-widest">
+                <p className="m3-body-small font-black text-slate-400 uppercase tracking-widest">
                   {userRole === UserRole.CREATOR ? 'Board Certified' : 'Medical Student'}
                 </p>
               </div>
@@ -247,11 +247,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
 
       {isCreditModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
-           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 max-w-xl w-full border border-slate-200 dark:border-slate-800 space-y-8 animate-in zoom-in-95">
+           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 max-w-xl w-full border border-slate-200 dark:border-slate-800 space-y-8 animate-in zoom-in-95">
               <div className="flex justify-between items-start">
-                 <div className="space-y-1">
-                    <h3 className="m3-headline-medium font-black text-slate-900 dark:text-white tracking-tighter uppercase">AI Utility Tokens</h3>
-                    <p className="m3-body-medium text-slate-500 font-medium italic">Refill tokens for clinical generations and simulations.</p>
+                 <div className="space-y-2">
+                    <h3 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase">AI Utility Tokens</h3>
+                    <p className="m3-body-small text-slate-500 font-medium italic">Refill tokens for clinical generations and simulations.</p>
                  </div>
                  <button onClick={() => setIsCreditModalOpen(false)} className="p-2 text-slate-400 hover:bg-slate-100 rounded-xl transition-all"><X size={24} /></button>
               </div>
@@ -262,38 +262,38 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
                    { tokens: '2,000', price: '$99', desc: 'Standard', popular: true },
                    { tokens: '10,000', price: '$399', desc: 'Enterprise' }
                  ].map((pkg, i) => (
-                   <button key={i} className={`p-6 rounded-[2rem] border-2 text-center transition-all flex flex-col items-center justify-center space-y-2 relative ${pkg.popular ? 'border-primary bg-primary/5' : 'border-slate-100 dark:border-slate-800'}`}>
+                   <button key={i} className={`p-6 rounded-2xl border-2 text-center transition-all flex flex-col items-center justify-center space-y-3 relative ${pkg.popular ? 'border-primary bg-primary/5' : 'border-slate-100 dark:border-slate-800'}`}>
                       {pkg.popular && <span className="absolute -top-3 bg-primary text-white m3-body-small font-black uppercase tracking-widest px-3 py-1 rounded-full">Popular</span>}
-                      <p className="m3-headline-small font-black text-slate-900 dark:text-white tracking-tighter">{pkg.tokens}</p>
+                      <p className="m3-headline-small font-black text-slate-900 dark:text-white">{pkg.tokens}</p>
                       <p className="m3-body-small font-black text-slate-400 uppercase tracking-widest">{pkg.desc}</p>
-                      <p className="m3-body-large font-black text-primary">{pkg.price}</p>
+                      <p className="m3-label-large font-black text-primary">{pkg.price}</p>
                    </button>
                  ))}
               </div>
               
-              <button className="w-full bg-slate-900 dark:bg-blue-600 text-white py-5 rounded-2xl m3-label-large font-black uppercase tracking-widest active:scale-95 transition-all">Secure Checkout</button>
+              <button className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest active:scale-95 transition-all hover:opacity-90">Secure Checkout</button>
            </div>
         </div>
       )}
 
       {isCodeModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-300">
-           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 max-w-md w-full border border-slate-200 dark:border-slate-800 space-y-8 animate-in zoom-in-95">
+           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 max-w-md w-full border border-slate-200 dark:border-slate-800 space-y-8 animate-in zoom-in-95">
               <div className="flex justify-between items-start">
-                 <div className="space-y-1">
-                    <h3 className="m3-headline-small font-black text-slate-900 dark:text-white tracking-tight uppercase">Redeem Exam</h3>
-                    <p className="m3-body-medium text-slate-500 font-medium italic">Enter the 6-digit institutional code.</p>
+                 <div className="space-y-2">
+                    <h3 className="m3-headline-small font-black text-slate-900 dark:text-white uppercase">Redeem Exam</h3>
+                    <p className="m3-body-small text-slate-500 font-medium italic">Enter the 6-digit institutional code.</p>
                  </div>
                  <button onClick={() => setIsCodeModalOpen(false)} className="p-2 text-slate-300 hover:bg-slate-100 rounded-xl transition-all"><X size={20} /></button>
               </div>
               <div className="space-y-4">
                  <div className="relative">
-                    <Key className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={20} />
+                    <Key className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={20} />
                     <input 
                        type="text" 
                        maxLength={6}
                        placeholder="CODE123" 
-                       className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl py-5 pl-14 pr-6 m3-headline-small font-black uppercase tracking-[0.3em] outline-none focus:border-primary/30 dark:text-white"
+                       className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl py-4 pl-14 pr-4 m3-label-large font-black uppercase tracking-[0.3em] outline-none focus:border-primary/30 dark:text-white"
                        value={examCode}
                        onChange={(e) => setExamCode(e.target.value.toUpperCase())}
                     />
@@ -301,7 +301,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeView, setActiveV
                  <button 
                    onClick={handleRedeemCode}
                    disabled={examCode.length < 4}
-                   className="w-full bg-primary text-white py-5 rounded-2xl m3-label-large font-black uppercase tracking-widest disabled:opacity-30 transition-all flex items-center justify-center space-x-2 shadow-xl shadow-blue-100 dark:shadow-none"
+                   className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black uppercase tracking-widest disabled:opacity-30 transition-all flex items-center justify-center space-x-2 shadow-xl shadow-blue-100 dark:shadow-none"
                  >
                     <Sparkles size={18} />
                     <span>Initialize Session</span>

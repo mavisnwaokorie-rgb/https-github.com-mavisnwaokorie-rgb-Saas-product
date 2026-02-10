@@ -27,10 +27,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onNavigate })
 
   const DemoModal = () => (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-in fade-in duration-200">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-md w-full border border-slate-100 dark:border-slate-800 space-y-6 animate-in zoom-in-95">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-md w-full border border-slate-100 dark:border-slate-800 space-y-8 animate-in zoom-in-95">
         <div className="flex justify-between items-start">
-          <div className="space-y-1">
-            <h3 className="m3-headline-small font-bold text-slate-900 dark:text-white uppercase tracking-tight">Request Platform Demo</h3>
+          <div className="space-y-2">
+            <h3 className="m3-headline-small font-bold text-slate-900 dark:text-white uppercase">Request Platform Demo</h3>
             <p className="m3-body-small text-slate-500 font-medium italic">Clinical curriculum walkthrough.</p>
           </div>
           <button onClick={() => setIsDemoModalOpen(false)} className="p-1.5 text-slate-300 hover:text-rose-500 transition-all">
@@ -43,24 +43,24 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onNavigate })
             <div className="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-sm">
               <ShieldCheck size={24} />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-2">
               <p className="m3-label-large font-bold text-slate-900 dark:text-white">Inquiry Received</p>
               <p className="m3-body-small text-slate-500 italic">A specialist will contact you shortly.</p>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleDemoSubmit} className="space-y-4">
+          <form onSubmit={handleDemoSubmit} className="space-y-6">
             <div className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="m3-body-small font-bold text-slate-400 uppercase tracking-widest ml-1">Practitioner Name</label>
+              <div className="space-y-2">
+                <label className="m3-body-small font-bold text-slate-400 uppercase tracking-widest block">Practitioner Name</label>
                 <input required type="text" placeholder="Dr. Jane Smith" className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl py-3 px-4 m3-body-medium font-medium outline-none" />
               </div>
-              <div className="space-y-1.5">
-                <label className="m3-body-small font-bold text-slate-400 uppercase tracking-widest ml-1">Work Email</label>
+              <div className="space-y-2">
+                <label className="m3-body-small font-bold text-slate-400 uppercase tracking-widest block">Work Email</label>
                 <input required type="email" placeholder="jane@hospital.org" className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl py-3 px-4 m3-body-medium font-medium outline-none" />
               </div>
             </div>
-            <button type="submit" className="w-full bg-primary text-white py-3.5 rounded-xl m3-label-medium font-bold uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center space-x-2">
+            <button type="submit" className="w-full bg-primary text-white py-3 rounded-xl m3-label-large font-bold uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center space-x-2">
                <span>Initialize Request</span>
                <ArrowRight size={16} />
             </button>
@@ -78,40 +78,40 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onNavigate })
             <div className="bg-primary p-1 rounded-lg">
               <Stethoscope className="text-white w-5 h-5" />
             </div>
-            <h1 className="m3-label-large font-bold tracking-tight text-slate-900 dark:text-white uppercase">MedScroll</h1>
+            <h1 className="m3-label-large font-bold text-slate-900 dark:text-white uppercase">MedScroll</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8 m3-body-small font-bold uppercase tracking-widest text-slate-500">
             <button onClick={() => onNavigate(AppView.FAQ)} className="hover:text-primary transition-colors">FAQ</button>
             <button onClick={() => onNavigate(AppView.MARKETPLACE)} className="hover:text-primary transition-colors">Marketplace</button>
-            <button onClick={onStart} className="bg-slate-900 text-white px-5 py-2 rounded-lg hover:opacity-90 transition-all">Sign In</button>
+            <button onClick={onStart} className="bg-slate-900 text-white px-5 py-2 rounded-lg m3-label-medium font-bold uppercase hover:opacity-90 transition-all">Sign In</button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 relative z-10 text-center space-y-6">
-          <div className="inline-flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full border border-blue-100 text-primary">
+        <div className="max-w-6xl mx-auto px-6 relative z-10 text-center space-y-8">
+          <div className="inline-flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-full border border-blue-100 text-primary">
             <Sparkles size={12} className="animate-pulse" />
             <span className="m3-body-small font-bold uppercase tracking-widest">Institutional AI Platform</span>
           </div>
-          <h2 className="m3-headline-large font-bold text-slate-900 dark:text-white leading-tight tracking-tight max-w-2xl mx-auto uppercase">
+          <h2 className="m3-headline-large font-bold text-slate-900 dark:text-white max-w-2xl mx-auto uppercase">
             The Future of Medical Education <span className="text-primary italic">is here.</span>
           </h2>
           <p className="m3-body-large text-slate-500 font-medium max-w-xl mx-auto leading-relaxed italic">
             The cloud blueprint for medical mastery. Generate simulations, accredited quizzes, and curricula for institutions in seconds.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button 
               onClick={onStart}
-              className="w-full sm:w-auto bg-primary text-white px-7 py-3 rounded-xl m3-label-medium font-bold uppercase tracking-widest hover:opacity-95 transition-all flex items-center justify-center space-x-2"
+              className="w-full sm:w-auto bg-primary text-white px-7 py-3 rounded-xl m3-label-large font-bold uppercase tracking-widest hover:opacity-95 transition-all flex items-center justify-center space-x-2"
             >
               <span>Get Started</span>
               <ArrowRight size={16} />
             </button>
             <button 
               onClick={() => setIsDemoModalOpen(true)}
-              className="w-full sm:w-auto bg-white border border-slate-100 text-slate-500 px-7 py-3 rounded-xl m3-label-medium font-bold uppercase tracking-widest hover:bg-slate-50 transition-all"
+              className="w-full sm:w-auto bg-white border border-slate-100 text-slate-500 px-7 py-3 rounded-xl m3-label-large font-bold uppercase tracking-widest hover:bg-slate-50 transition-all"
             >
               Request Demo
             </button>

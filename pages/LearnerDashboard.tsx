@@ -41,7 +41,7 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onNavigate, 
     <div className="space-y-10 animate-in fade-in duration-500">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <h2 className="m3-display-medium font-black text-slate-900 dark:text-white tracking-tighter leading-none uppercase">Learning Core</h2>
+          <h2 className="m3-headline-large font-black text-slate-900 dark:text-white uppercase">Learning Core</h2>
           <p className="m3-body-large text-slate-500 font-medium italic">Track your clinical progression and accredited assets.</p>
         </div>
         <div className="flex items-center space-x-2 bg-white dark:bg-slate-900 p-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative">
@@ -80,12 +80,12 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onNavigate, 
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all hover:border-primary/20">
-             <div className="flex justify-between items-start mb-4">
-                <div className={`p-3 rounded-2xl ${stat.color}`}>{stat.icon}</div>
+          <div key={i} className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all">
+             <div className="flex justify-between items-start mb-3">
+                <div className={`p-2.5 rounded-xl ${stat.color}`}>{stat.icon}</div>
              </div>
-             <p className="m3-body-small font-bold uppercase tracking-[0.1em] text-slate-400">{stat.label}</p>
-             <h3 className="m3-headline-small font-black text-slate-900 dark:text-white tracking-tighter mt-1">{stat.value}</h3>
+             <p className="m3-body-small font-bold uppercase tracking-widest text-slate-400">{stat.label}</p>
+             <h3 className="m3-headline-small font-bold text-slate-900 dark:text-white tracking-tight mt-0.5">{stat.value}</h3>
           </div>
         ))}
       </div>
@@ -93,8 +93,8 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onNavigate, 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
          <div className="lg:col-span-8 space-y-6">
             <div className="flex items-center justify-between px-2">
-               <h3 className="m3-headline-small font-black text-slate-900 dark:text-white uppercase tracking-tight">Active Curricula</h3>
-               <button onClick={() => onNavigate(AppView.MY_COURSES)} className="text-[10px] font-black text-primary uppercase tracking-[0.2em] hover:underline flex items-center space-x-1">
+               <h3 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase">Active Curricula</h3>
+               <button onClick={() => onNavigate(AppView.MY_COURSES)} className="m3-body-small font-black text-primary uppercase tracking-widest hover:underline flex items-center space-x-1">
                   <span>View All</span>
                   <ChevronRight size={12} />
                </button>
@@ -110,9 +110,9 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onNavigate, 
                        </div>
                     </div>
                     <div className="p-6 space-y-4">
-                       <h4 className="m3-body-large font-black text-slate-900 dark:text-white leading-tight uppercase group-hover:text-primary transition-colors">{course.title}</h4>
-                       <div className="space-y-2 pt-2 border-t border-slate-50 dark:border-slate-800">
-                          <div className="flex justify-between m3-body-small font-black text-slate-400 uppercase tracking-widest">
+                       <h4 className="m3-label-large font-black text-slate-900 dark:text-white leading-tight uppercase group-hover:text-primary transition-colors">{course.title}</h4>
+                       <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                          <div className="flex justify-between m3-body-small font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                              <span>Progress</span>
                              <span>{course.progress}%</span>
                           </div>
@@ -128,11 +128,11 @@ export const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onNavigate, 
 
          <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center justify-between px-2">
-               <h3 className="m3-headline-small font-black text-slate-900 dark:text-white uppercase tracking-tight">Exam Radar</h3>
+               <h3 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase">Exam Radar</h3>
             </div>
-            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-50 dark:divide-slate-800 shadow-sm">
+            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 shadow-sm">
                {examInvites.map(inv => (
-                 <div key={inv.id} className="p-6 hover:bg-slate-50 transition-all group cursor-pointer">
+                 <div key={inv.id} className="p-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group cursor-pointer">
                     <div className="flex justify-between items-start mb-3">
                        <div className="p-2.5 bg-blue-50 text-blue-600 rounded-xl">{inv.type.includes('Sim') ? <HeartPulse size={18} /> : <FileCheck size={18} />}</div>
                        {inv.codeRequired && <div className="p-2 bg-amber-50 text-amber-600 rounded-xl" title="Code Required"><Key size={14} /></div>}

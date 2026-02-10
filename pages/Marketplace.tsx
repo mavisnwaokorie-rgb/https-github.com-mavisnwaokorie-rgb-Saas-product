@@ -26,35 +26,35 @@ export const Marketplace: React.FC<{
       <div className="space-y-8 animate-in slide-in-from-right-4 font-sans max-w-7xl mx-auto px-4">
         <button 
           onClick={() => onNavigate(AppView.MARKETPLACE)}
-          className="flex items-center space-x-2 text-slate-400 hover:text-primary font-bold transition-all text-[11px] uppercase tracking-widest group outline-none"
+          className="flex items-center space-x-2 text-slate-400 hover:text-primary font-bold transition-all m3-body-small uppercase tracking-widest group outline-none"
         >
           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
           <span>Back to Marketplace</span>
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 space-y-10">
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2 text-primary font-bold text-[10px] uppercase tracking-widest">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-8 space-y-8">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-2 text-primary font-bold m3-body-small uppercase tracking-widest">
                 <span className="opacity-50">Marketplace</span>
                 <ChevronRight size={12} className="opacity-30" />
-                <span className="bg-primary/10 px-2.5 py-1 rounded text-primary">{selectedCourse.category}</span>
+                <span className="bg-primary/10 px-3 py-1.5 rounded text-primary">{selectedCourse.category}</span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter uppercase">{selectedCourse.title}</h1>
+              <h1 className="m3-headline-large font-black text-slate-900 dark:text-white uppercase">{selectedCourse.title}</h1>
               <div className="flex flex-wrap items-center gap-6 pt-2">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-slate-400 border border-slate-200 dark:border-slate-700">
                     {selectedCourse.author[0]}
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Instructor</p>
-                    <p className="text-base font-bold text-slate-900 dark:text-white leading-none">{selectedCourse.author}</p>
+                    <p className="m3-body-small font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Instructor</p>
+                    <p className="m3-label-large font-bold text-slate-900 dark:text-white leading-none">{selectedCourse.author}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2 text-amber-500">
                   <Star size={18} fill="currentColor" />
-                  <span className="text-lg font-bold text-slate-900 dark:text-white">{selectedCourse.rating}</span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">({selectedCourse.reviews.toLocaleString()} reviews)</span>
+                  <span className="m3-label-large font-bold text-slate-900 dark:text-white">{selectedCourse.rating}</span>
+                  <span className="m3-body-small font-bold text-slate-400 uppercase tracking-widest">({selectedCourse.reviews.toLocaleString()} reviews)</span>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@ export const Marketplace: React.FC<{
             </div>
 
             <div className="space-y-6">
-               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter border-l-4 border-primary pl-4">Clinical Objectives</h3>
+               <h3 className="m3-headline-medium font-black text-slate-900 dark:text-white uppercase border-l-4 border-primary pl-4">Clinical Objectives</h3>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
                     'Master complex EKG visual pattern recognition in clinical triage.',
@@ -77,9 +77,9 @@ export const Marketplace: React.FC<{
                     'Apply board-grade reasoning to emergency events.',
                     'Validate management via high-fidelity virtual simulations.'
                   ].map((obj, i) => (
-                    <div key={i} className="flex items-start space-x-4 p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl transition-all">
+                    <div key={i} className="flex items-start space-x-4 p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl transition-all">
                        <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
-                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic">{obj}</p>
+                       <p className="m3-body-small font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic">{obj}</p>
                     </div>
                   ))}
                </div>
@@ -89,14 +89,14 @@ export const Marketplace: React.FC<{
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 space-y-8 sticky top-28 shadow-sm">
               <div className="text-center space-y-2">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Registry Fee</p>
-                <h4 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter">${selectedCourse.price}</h4>
+                <p className="m3-body-small font-bold text-slate-400 uppercase tracking-widest">Registry Fee</p>
+                <h4 className="m3-headline-large font-black text-slate-900 dark:text-white">${selectedCourse.price}</h4>
               </div>
 
               <button 
                 onClick={() => onNavigate(AppView.CHECKOUT, selectedCourse)}
                 disabled={isPurchased}
-                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-base uppercase tracking-widest hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-white py-4 rounded-xl m3-label-medium font-bold uppercase tracking-widest hover:opacity-95 active:scale-[0.98] transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ShoppingBag size={18} />
                 <span>{isPurchased ? 'View Course' : 'Enroll'}</span>
