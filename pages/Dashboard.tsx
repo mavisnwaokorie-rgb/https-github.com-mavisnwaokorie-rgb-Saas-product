@@ -188,24 +188,17 @@ export const Dashboard: React.FC = () => {
             <button 
               key={p}
               onClick={() => { setPeriod(p); setDuration(p === 'weekly' ? 'Last 7 Days' : 'Last 30 Days'); }}
-              className={`px-6 py-2 rounded-xl m3-body-small font-black uppercase tracking-widest transition-all ${period === p ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-50'}`}
+              className={`px-6 py-2 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${period === p ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               {p}
             </button>
           ))}
           <div className="w-[1px] h-6 bg-slate-100 dark:bg-slate-800 mx-1"></div>
           <button
-            onClick={() => setPeriod('weekly')}
-            className={`px-4 py-2 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${period === 'weekly' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+            onClick={() => setIsCalendarOpen(true)}
+            className={`p-2 rounded-xl transition-all ${isCalendarOpen ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
           >
-            Weekly
-          </button>
-
-          <button
-            onClick={() => setPeriod('monthly')}
-            className={`px-4 py-2 rounded-xl m3-body-small font-bold uppercase tracking-widest transition-all ${period === 'monthly' ? 'bg-primary text-white shadow-lg' : 'text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
-          >
-            Monthly
+            <CalendarIcon size={18} />
           </button>
 
           {isCalendarOpen && (
