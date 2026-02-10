@@ -25,17 +25,17 @@ const SettingsRow: React.FC<SettingsRowProps> = ({ icon, title, description, onC
     onClick={onClick}
     className="flex items-center justify-between p-6 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all cursor-pointer group"
   >
-    <div className="flex items-center space-x-5">
-      <div className={`p-4 rounded-2xl transition-all ${active ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600'}`}>
+    <div className="flex items-center space-x-4">
+      <div className={`p-3 rounded-2xl transition-all ${active ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600'}`}>
         {icon}
       </div>
-      <div>
-        <p className="text-sm font-black text-slate-900 dark:text-slate-100">{title}</p>
-        <p className="text-[11px] font-medium text-slate-400 dark:text-slate-500">{description}</p>
+      <div className="space-y-1">
+        <p className="m3-label-large font-black text-slate-900 dark:text-slate-100">{title}</p>
+        <p className="m3-body-small font-medium text-slate-400 dark:text-slate-500">{description}</p>
       </div>
     </div>
     <div className="flex items-center space-x-3">
-      {value && <span className="text-[10px] font-black text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg uppercase tracking-widest">{value}</span>}
+      {value && <span className="m3-body-small font-black text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg uppercase tracking-widest">{value}</span>}
       {toggle !== undefined ? (
         <button 
           className={`w-12 h-7 rounded-full relative transition-colors duration-300 ${active ? 'bg-blue-600' : 'bg-slate-200 dark:bg-slate-700'}`}
@@ -61,15 +61,15 @@ export const Settings: React.FC<{
   const [interactionPrefs, setInteractionPrefs] = useState({ voice: true, haptic: true, transcripts: true });
 
   const renderSubHeader = (title: string) => (
-    <div className="space-y-4 mb-10 animate-in slide-in-from-left-4 duration-300">
+    <div className="space-y-4 mb-8 animate-in slide-in-from-left-4 duration-300">
       <button 
         onClick={() => onNavigate(AppView.SETTINGS)}
-        className="flex items-center space-x-2 text-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-colors font-bold text-sm"
+        className="flex items-center space-x-2 text-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-colors m3-label-medium font-bold"
       >
         <ArrowLeft size={18} />
         <span>Settings Overview</span>
       </button>
-      <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{title}</h2>
+      <h2 className="m3-headline-large font-black text-slate-900 dark:text-white">{title}</h2>
     </div>
   );
 
@@ -87,38 +87,38 @@ export const Settings: React.FC<{
                 </div>
              </div>
              <div className="text-center">
-                <h4 className="text-2xl font-black text-slate-900 dark:text-white flex items-center justify-center space-x-2">
+                <h4 className="m3-headline-small font-black text-slate-900 dark:text-white flex items-center justify-center space-x-2">
                   <span>Dr. Sarah Chen</span>
                   <BadgeCheck size={20} className="text-blue-500" />
                 </h4>
-                <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-1">Creator ID: MS-94102-SCR</p>
+                <p className="m3-body-small font-bold text-slate-400 uppercase tracking-widest mt-2">Creator ID: MS-94102-SCR</p>
              </div>
           </div>
 
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">First Name</label>
-                  <input type="text" defaultValue="Sarah" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-5 py-4 font-bold outline-none dark:text-white" />
+                  <label className="m3-body-small font-black text-slate-400 uppercase tracking-widest block">First Name</label>
+                  <input type="text" defaultValue="Sarah" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-4 py-3 m3-body-medium font-bold outline-none dark:text-white" />
                </div>
                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Last Name</label>
-                  <input type="text" defaultValue="Chen" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-5 py-4 font-bold outline-none dark:text-white" />
+                  <label className="m3-body-small font-black text-slate-400 uppercase tracking-widest block">Last Name</label>
+                  <input type="text" defaultValue="Chen" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-4 py-3 m3-body-medium font-bold outline-none dark:text-white" />
                </div>
             </div>
             <div className="space-y-2">
-               <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Primary Email</label>
-               <input type="email" defaultValue="sarah.chen@hospital.org" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-5 py-4 font-bold outline-none dark:text-white" />
+               <label className="m3-body-small font-black text-slate-400 uppercase tracking-widest block">Primary Email</label>
+               <input type="email" defaultValue="sarah.chen@hospital.org" className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-4 py-3 m3-body-medium font-bold outline-none dark:text-white" />
             </div>
             <div className="space-y-2">
-               <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Specialty</label>
-               <select className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-5 py-4 font-bold outline-none cursor-pointer dark:text-white">
+               <label className="m3-body-small font-black text-slate-400 uppercase tracking-widest block">Specialty</label>
+               <select className="w-full bg-slate-50 dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-2xl px-4 py-3 m3-body-medium font-bold outline-none cursor-pointer dark:text-white">
                   <option>Cardiology</option>
                   <option>Neurology</option>
                   <option>General Medicine</option>
                </select>
             </div>
-            <button className="w-full bg-primary text-white py-5 rounded-2xl font-black shadow-lg shadow-blue-100 active:scale-95 transition-all">Save Profile Changes</button>
+            <button className="w-full bg-primary text-white py-4 rounded-2xl m3-label-large font-black active:scale-95 transition-all">Save Profile Changes</button>
           </div>
         </div>
       </div>
