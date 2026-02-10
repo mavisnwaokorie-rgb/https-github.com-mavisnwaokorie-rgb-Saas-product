@@ -1,0 +1,9 @@
+{
+  "name": "MedScroll SaaS",
+  "description": "AI-Powered Medical Education Platform for generating quizzes, clinical simulations, and medical courses.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

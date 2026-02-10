@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-default">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedScroll - AI Medical Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#349AFF',
+                        'med-navy': '#000036',
+                        dark: {
+                            bg: '#0f172a',
+                            surface: '#1e293b',
+                            border: '#334155'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            /* Material 3 Typography Tokens */
+            --display-large: clamp(3.5rem, 4vw + 1rem, 5rem);
+            --display-large-line: 96px;
+            --display-medium: clamp(3rem, 3vw + 1rem, 4rem);
+            --display-medium-line: 80px;
+            --headline-large: clamp(2rem, 2.5vw + 0.5rem, 2.5rem);
+            --headline-large-line: 48px;
+            --headline-medium: clamp(1.5rem, 2vw + 0.5rem, 2rem);
+            --headline-medium-line: 40px;
+            --headline-small: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+            --headline-small-line: 32px;
+            --body-large: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+            --body-large-line: 24px;
+            --body-medium: 1rem;
+            --body-medium-line: 24px;
+            --label-large: 1rem;
+            --label-large-line: 24px;
+            --label-medium: 0.875rem;
+            --label-medium-line: 24px;
+            --body-small: 0.75rem;
+            --body-small-line: 16px;
+        }
+
+        body { 
+            font-family: 'Inter', system-ui, sans-serif; 
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+        }
+
+        /* M3 Typography Utility Classes */
+        .m3-display-large { font-size: var(--display-large); line-height: var(--display-large-line); font-weight: 600; letter-spacing: -6px; }
+        .m3-display-medium { font-size: var(--display-medium); line-height: var(--display-medium-line); font-weight: 600; letter-spacing: -4px; }
+        .m3-headline-large { font-size: var(--headline-large); line-height: var(--headline-large-line); font-weight: 500; letter-spacing: -3px; }
+        .m3-headline-medium { font-size: var(--headline-medium); line-height: var(--headline-medium-line); font-weight: 500; letter-spacing: -1px; }
+        .m3-headline-small { font-size: var(--headline-small); line-height: var(--headline-small-line); font-weight: 500; letter-spacing: -0.5px; }
+        .m3-body-large { font-size: var(--body-large); line-height: var(--body-large-line); font-weight: 400; letter-spacing: 0; }
+        .m3-body-medium { font-size: var(--body-medium); line-height: var(--body-medium-line); font-weight: 400; letter-spacing: 0; }
+        .m3-label-large { font-size: var(--label-large); line-height: var(--label-large-line); font-weight: 500; letter-spacing: 0.5px; }
+        .m3-label-medium { font-size: var(--label-medium); line-height: var(--label-medium-line); font-weight: 500; letter-spacing: 0; }
+        .m3-body-small { font-size: var(--body-small); line-height: var(--body-small-line); font-weight: 400; letter-spacing: 0; }
+
+        /* 3-Theme System Implementation */
+        html.theme-default body { background-color: #000036; color: #f8fafc; }
+        html.theme-light body { background-color: #f8fafc; color: #0f172a; }
+        html.theme-dark body { background-color: #0f172a; color: #f8fafc; }
+
+        html.theme-default .bg-white { background-color: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.1); color: #fff; }
+        html.theme-default .text-slate-900 { color: #fff; }
+        html.theme-default .text-slate-700 { color: #cbd5e1; }
+        html.theme-default .text-slate-500 { color: #94a3b8; }
+        html.theme-default .bg-slate-50 { background-color: rgba(255, 255, 255, 0.02); }
+        html.theme-default .bg-slate-100 { background-color: rgba(255, 255, 255, 0.06); }
+        
+        html.theme-default .border-slate-100 { border-color: rgba(255, 255, 255, 0.07); }
+        html.theme-default .border-slate-200 { border-color: rgba(255, 255, 255, 0.12); }
+        html.theme-default .divide-slate-50 { border-color: rgba(255, 255, 255, 0.05); }
+        html.theme-default .divide-slate-100 { border-color: rgba(255, 255, 255, 0.07); }
+        
+        html.theme-default header { 
+            background-color: rgba(0, 0, 54, 0.6) !important; 
+            backdrop-filter: blur(16px); 
+        }
+        
+        html.theme-default .bg-white.dark\:bg-slate-900,
+        html.theme-default .bg-white.dark\:bg-\[\#1e293b\] {
+            background-color: rgba(255, 255, 255, 0.06) !important;
+            backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .force-light-theme {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+        .force-light-theme .bg-white { background-color: #ffffff !important; color: #0f172a !important; }
+        .force-light-theme .text-slate-900 { color: #0f172a !important; }
+        .force-light-theme .text-slate-500 { color: #64748b !important; }
+        .force-light-theme .text-slate-400 { color: #94a3b8 !important; }
+        .force-light-theme .bg-slate-50 { background-color: #f8fafc !important; }
+        .force-light-theme .bg-slate-900 { background-color: #0f172a !important; }
+        .force-light-theme .border-slate-50 { border-color: #f1f5f9 !important; }
+        .force-light-theme .border-slate-100 { border-color: #f1f5f9 !important; }
+        .force-light-theme .border-slate-200 { border-color: #e2e8f0 !important; }
+        .force-light-theme input, .force-light-theme select, .force-light-theme textarea {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+        .force-light-theme nav {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            border-bottom-color: #f1f5f9 !important;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        * { box-shadow: none !important; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "recharts": "https://esm.sh/recharts@3.6.0?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0?external=react",
+    "@google/genai": "https://esm.sh/@google/genai@1.37.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
